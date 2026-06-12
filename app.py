@@ -266,19 +266,16 @@ sensitivity = result["sensitivity"]
 
 # ── TABS ──────────────────────────────────────────────────────────────────────
 
-# Navigation custom — radio horizontal (jamais tronqué)
+# Navigation selectbox
+TABS = ["Marchés", "Scores", "Notation", "Insights", "Matrice", "Cycle", "Rapport"]
 if "current_tab" not in st.session_state:
     st.session_state.current_tab = "Marchés"
 
-current_tab = st.radio(
-    "Navigation",
-    ["Marchés", "Scores", "Notation", "Insights", "Matrice", "Cycle", "Rapport"],
-    index=["Marchés", "Scores", "Notation", "Insights", "Matrice", "Cycle", "Rapport"].index(
-        st.session_state.current_tab
-    ),
-    horizontal=True,
-    label_visibility="collapsed",
-    key="nav_radio",
+current_tab = st.selectbox(
+    "Page",
+    TABS,
+    index=TABS.index(st.session_state.current_tab),
+    key="nav_select",
 )
 st.session_state.current_tab = current_tab
 st.divider()
